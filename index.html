@@ -42,6 +42,7 @@
     padding: 16px 20px; margin: 24px 0;
   }
   a { color: var(--data); }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--dim); }
   section[hidden] { display: none; }
 </style>
 </head>
@@ -84,6 +85,8 @@
 
     <h2>联系我们</h2>
     <p>有任何问题，请发邮件到 <a href="mailto:percyjackson_job@outlook.com">percyjackson_job@outlook.com</a>。</p>
+
+    <footer><a data-link="support" href="support/">支持</a></footer>
   </section>
 
   <section lang="zh-Hant" data-lang="zh-Hant" hidden>
@@ -114,6 +117,8 @@
 
     <h2>聯絡我們</h2>
     <p>有任何問題，請寄信到 <a href="mailto:percyjackson_job@outlook.com">percyjackson_job@outlook.com</a>。</p>
+
+    <footer><a data-link="support" href="support/">支援</a></footer>
   </section>
 
   <section lang="en" data-lang="en" hidden>
@@ -144,6 +149,8 @@
 
     <h2>Contact</h2>
     <p>If you have any questions, email <a href="mailto:percyjackson_job@outlook.com">percyjackson_job@outlook.com</a>.</p>
+
+    <footer><a data-link="support" href="support/">Support</a></footer>
   </section>
 
   <section lang="ja" data-lang="ja" hidden>
@@ -174,6 +181,8 @@
 
     <h2>お問い合わせ</h2>
     <p>ご質問は <a href="mailto:percyjackson_job@outlook.com">percyjackson_job@outlook.com</a> までメールでお送りください。</p>
+
+    <footer><a data-link="support" href="support/">サポート</a></footer>
   </section>
 </main>
 <script>
@@ -204,6 +213,10 @@
       });
       document.querySelectorAll("nav button").forEach(function (b) {
         b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+      });
+      // 跳到支持页时带上当前语言
+      document.querySelectorAll("a[data-link=support]").forEach(function (a) {
+        a.href = "support/?lang=" + lang;
       });
       document.documentElement.lang = lang;
       document.title = titles[lang];
